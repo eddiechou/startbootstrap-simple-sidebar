@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Previous Research on Door">
+    <meta name="author" content="Eddie Chou">
+
+    <title>Previous Work on Door Finding</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="index.html">Door Finding</a></li>
+                <li><a href="index.html">Introduction to Door Finding</a></li>
+                <li><a href="#">Overview of Types of Systems</a></li>
+                <li><a href="algorithms-1.html">Algorithms Part I</a></li>
+                <li><a href="algorithms-2.html">Algorithms Part II</a></li>
+                <li><a href="results.html">Research Results and Future Work</a></li>
+                <li><a href="quiz.html">Door Finding Quiz</a></li>
+                <li><a href="annotated-biblio.html">Annotated Bibliography</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <h1>Overview of Types of Door Finding Systems</h1>
+                        <h3>Introduction</h3>
+                        <p>Here I will present the primary paper we will focus our attention in terms of algorithms on. I have also listed other methodologies of door finding that have been attempted. A common objective is to obtain depth information in some way in order to use it to determine the concavity of potential doors. This can be done using laser range finders, sonar, or stereo vision. In terms of monocular visual methods, features such as pairs of vertical lines, concavity, gaps between the door and floor, color, texture, kick plate, and vanishing point have been used.</p>
+
+                        <h3>Spotlight Paper</h3>
+                        <p>The research we will focus on for elaborating on algorithms used will be an "image-based door detection algorithm by establishing a general geometric door model that utilizes the general and stable features of doors (i.e. edges and corners) without a training process. Furthermore, integrated with geometric information of lateral at similar horizontal coordinates, the algorithm is able to distinguish doors from other objects with door-like shape and size. [It] is generic and robust to different environments with variations of color, texture, occlusions, illumination, scales, and viewpoints." <a href="annotated-biblio.html">[Ann 1]</a>.</p>
+
+                        <h3>Reasons for Spotlight Paper Selection</h3>
+                        <p>Rangefinders and stereovision methodologies of door detection have been well-established, but are often expensive. The reason for choosing this particular paper is that it only requires a single camera, which many people have in their phones, and is thus relatively widespread and cheap.
+                        <h3>Examples of Other Door Detection Systems Found in Research</h3>
+
+                            <ol>
+                                <li>Using an AdaBoost classifier, which has been trained to detect similar doors based on pairs of vertical lines, concavity, gap between the door and floor, color, texture, kick plate, and vanishing point <a href="annotated-biblio.html">[Ann 2]</a>.</li>
+                                <li>For a robot, attempting to detect doorknobs and using the height of the robot's stereo cameras and the average height of doorknobs to decrease computational load <a href="annotated-biblio.html">[Ann 3]</a>.</li>
+                                <li>Using laser range finders to establish range sensor models of the surrounding environment and to obtain distance data to test door concavity <a href="annotated-biblio.html">[Ann 4]</a>.</li>
+                                <li>Using multiple cameras using stereo vision to obtain depth information <a href="annotated-biblio.html">[Ann 5]</a>.</li>
+                                <li>Using a doorframe model-based door detector using a Hough Transform to extract the edges and a fuzzy logic system to differentiate the doors from other similar rectangular objects <a href="annotated-biblio.html">[Ann 6]</a>.</li>
+                                <li style="padding-bottom: 25px">Using 2 classifiers based on color and shape, which is dependent on all doors being the same <a href="annotated-biblio.html">[Ann 7]</a>.</li>
+                            </ol>
+                            <div class="col-lg-5 text-left">
+                                <img src="images/range-finder.png" alt="range finder" height="325">
+                                <p><a href="annotated-biblio.html">[Img 2]</a> An image showing how range finders work.</p>
+                            </div>
+                            <div class="col-lg-5 text-left">
+                                <img src="images/stereovision.png" alt="stereovision" height="325">
+                                <p><a href="annotated-biblio.html">[Img 3]</a> An image showing how multiple cameras can obtain depth information.</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

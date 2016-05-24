@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Previous Research on Door">
+    <meta name="author" content="Eddie Chou">
+
+    <title>Previous Work on Door Finding</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="index.html">Door Finding</a></li>
+                <li><a href="index.html">Introduction to Door Finding</a></li>
+                <li><a href="system-types.html">Overview of Types of Systems</a></li>
+                <li><a href="algorithms-1.html">Algorithms Part I</a></li>
+                <li><a href="algorithms-2.html">Algorithms Part II</a></li>
+                <li><a href="results.html">Research Results and Future Work</a></li>
+                <li><a href="quiz.html">Door Finding Quiz</a></li>
+                <li><a href="annotated-biblio.html">Annotated Bibliography</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <h1>Algorithms II</h1>
+
+                        <p>This is the continuation of the algorithms that are used in Computer Vision-Based Door Detection for Accessibility of Unfamiliar Environments to Blind Persons <a href="annotated-biblio.html">[Ann 1]</a>.
+
+                        <h3>Step 4: Establish Door-Corner Candidates</h3>
+
+                        <img src="images/door-labels.png" alt="door with labels" height="200">
+                        <img src="images/equations.png" alt="equations" height="125" style="padding-bottom:10px">
+
+                        <p>Images from <a href="annotated-biblio.html">[Ann 1]</a>. Let C<sub>1</sub>, C<sub>2</sub>, C<sub>3</sub>, and C<sub>4</sub> be the four corners with coordinate (x<sub>i</sub>, y<sub>i</sub>). Let L<sub>ij</sub> be the line connecting C<sub>i</sub> and C<sub>j</sub>. Siz<sub>ij</sub> is the ratio of the length of L<sub>ij</sub> and the diagonal of the image is DI (Equation 1). Dir<sub>ij</sub> is the direction of L<sub>ij</sub> relative to the horizontal axis of the image (Equation 2). Lines that are close to horizontal will have Siz<sub>ij</sub> close to 0.</p>
+
+                        <p>We can establish door-corner candidates by making sure the corners satisfy the following rules:</p>
+                        <ol>
+                            <li>A door has a certain width and height. So the widths Siz<sub>12</sub> and Siz<sub>34</sub> should be within some range. Same with the lengths Siz<sub>23</sub> and Siz<sub>41</sub>.</li>
+                            <li>The "horizontal" lines of the door should be close to horizontal with the image. Dir<sub>23</sub> and Dir<sub>41</sub> should be less than some threshold.</li>
+                            <li>Vertical lines should be almost perpendicular to the horizontal axis of the image. Dir<sub>12</sub> and Dir<sub>34</sub> should be greater than some threshold.</li>
+                            <li>The vertical lines should be parallel. |Dir<sub>12</sub> - Dir<sub>34</sub>| should be less than some threshold.</li>
+                            <li>The ratio between height and width should be within some range (Siz<sub>12</sub> + Siz<sub>34</sub>) / (Siz<sub>23</sub> + Siz<sub>41</sub>) should be between two thresholds.</li>
+                        </ol>
+
+                        <h3>Step 5: Door Model Matching by Combining Edges and Corners</h3>
+                        <h4>Using Hough Transform</h4>
+                        <p> </p>
+                        <h4>Using Fill-Ratio</h4>
+                        <img src="images/fill-ratio.png" alt="fill ratio" height="200">
+                        <p>Image from <a href="annotated-biblio.html">[Ann 1]</a>. The fill-ratio (FR) of corner C<sub>i</sub> and C<sub>j</sub> in the edge map is defined as Overlap<sub>ij</sub> / Length<sub>ij</sub>. Overlap is the length of the overlapping line and Length is the length of L<sub>ij</sub>. Image (a) has FR = 0.96 and Image (b) has FR = 0.54. The FR is essentially measuring the deviation between the straight line connecting the two corners and the reference edge (on the edge map). If all four FR values (FR<sub>12</sub>, FR<sub>23</sub>, FR<sub>34</sub>, FR<sub>41</sub>) are all greater than a threshold, then the door-corner candidate is categorized as a real door. If corners are occluded, two corners are set to the threshold value.</p>
+                        <p>At this point, we are able to classify doors. However, to optimize our results, we would want to distinguish doors from other large convex objects!
+
+                        <h3>Step 6: Distinguishing Doors from Large Convex Objects</h3>
+                        <img src="images/concavity.png" alt="concavity" height="200">
+                        <p>Image from <a href="annotated-biblio.html">[Ann 1]</a>. In (a) we can see that concave objects like doors and elevators have its lateral (its side wall) C<sub>1</sub>-C<sub>2</sub>-C<sub>5</sub>-C<sub>6</sub> <em>within</em> the frame's C<sub>1</sub>-C<sub>2</sub>. In (b) we can see that convex objects relative to the wall have its lateral (its side wall) C<sub>4</sub>-C<sub>3</sub>-C<sub>5</sub>-C<sub>6</sub> located outside and adjacent to the frame C<sub>3</sub>-C<sub>4</sub>.</p>
+                        <p>By determining which concavity the object is, we can eliminate convex objects from being classified as doors.
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

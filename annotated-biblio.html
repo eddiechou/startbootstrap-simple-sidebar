@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Previous Research on Door">
+    <meta name="author" content="Eddie Chou">
+
+    <title>Previous Work on Door Finding</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="index.html">Door Finding</a></li>
+                <li><a href="index.html">Introduction to Door Finding</a></li>
+                <li><a href="system-types.html">Overview of Types of Systems</a></li>
+                <li><a href="algorithms-1.html">Algorithms Part I</a></li>
+                <li><a href="algorithms-2.html">Algorithms Part II</a></li>
+                <li><a href="results.html">Research Results and Future Work</a></li>
+                <li><a href="quiz.html">Door Finding Quiz</a></li>
+                <li><a href="annotated-biblio.html">Annotated Bibliography</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <h1>Annotated Bibliography</h1>
+                        <p>[Ann 1] Yang, X. and Tian Y., Robust Door Detection in Unfamiliar Environments by Combining Edge and Corner Features. <em>IEEE Computer Society Workshop on Computer Vision Applications for the Visually Impaired, 2010.</em></p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: In this paper, they go over the current limitations and room for research in the area of helping visually-impaired people explore unfamiliar indoor environments. Indoor door-detection is difficult because of large intra-class variations of appearance and design and relatively small inter-class variations of different object models.</p>
+                        <p style="margin-left:2em">The researchers develop a geometric model by combining edges and corners to determine the concavity of the object. Concave objects (doors and elevators) are separated from convex objects (bookshelves and cabinets) by integrating the lateral information of  a detected doorframe to obtain the depth information with respect to the wall. The researchers wanted to direct the user by using audio queues. To obtain the relative position of the door to the user, they use the angle formed by the horizontal bar (of the detected doorframe) and the horizontal axis of the image.</p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: These researchers are at the Department of Electrical Engineering, The City College, City University of New York. IEEE is the world's largest technical organization.</p>
+
+
+                        <p>[Ann 2] Chen, Zhichao and Birchfield, Stanley T., Visual Detection of Lintel-Occluded Doors from a Single Image. Computer Vision and Pattern Recognition Workshops, 2008. CVPRW '08. IEEE Computer Society Conference on. </p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: As an introduction to their paper, they go over two visual cues that have been used by previous papers: intensity edges to detect the sides (posts) and top (lintel) of the door, and the average door color which is assumed to be different from that of the surrounding wall.</p>
+                        <p style="margin-left:2em">Their approach uses a single image and five features. Weak classifiers based on these 5 features are combined using Adaboost to produce a strong classifier. Their assumptions are that both door posts and visible in the image, the camera is oriented so that the posts appear nearly vertical, and the door is at least a certain width. The features they look for are pairs of vertical lines, the concavity of the detected shape, the gap below the door, the color, and a kick plate.</p>
+                        <p style="margin-left:2em">Their algorithm detect 20 doors out of 22 in the corridor they tested, with 100% accuracy for the ones detected (10/10 times each). The ones that weren’t detected were due to an occluding water fountain and the other wasn’t detected because it was flush with the wall.</p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: Zhichao Chen is in the Electrical and Computer Engineering Department at Clemson University, SC. IEEE is the world's largest technical organization.</p>
+
+
+                        <p>[Ann 3] Kim, S., Cheong, H., Kim, D. H., Park, S., Context-based Object Recognition for Door Detection. 15th International Conference on Advanced Robotics (ICAR), 2011.</p>
+
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: In this paper, they go over context-based door-finding for a robot. They use the robotic context (height of the stereo cameras) and the average height of doorknobs to help them. They also detect two different types of doorknobs, which were straight and round ones. As an introduction to their paper, they went over both range sensor-based door detection methods and vision-based door detection methods. </p>
+                        <p style="margin-left:2em">For their methodology, they create a region of interest to look for doors. They want to find vertical lines so to extract vertical lines, they used a moving window to scan an edge image along the x axis to build a histogram of edges. The width of the moving window is set wide enough to cover inclined vertical lines. Next, they look for the doorknob. To recognize the doorknob they used an affine category shape model, which uses object shapes only. They trained the model and used a feature matching algorithm to recognize the doorknobs.</p>
+                        <p style="margin-left:2em">Their results reported a 100% door detection rate, though some false positives were present (1/102 for handled doors and 5/189 for knobbed doors).</p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: These researchers are from The Australian National University. ICAR is co-sponsored by the IEEE Robotics and Automation Society.</p>
+
+                        <p>[Ann 4] Anguelov, D., Koller, D., Parker, E., Thrun, S.: Detecting and modeling doors with mobile robots. In: Proceedings of the IEEE International Conference on Robotics and Automation (2004).</p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: This is a journal article that talks about research in which a laser rangefinder is used to determine the concavity of doors.</p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: These researchers are from the CS department at Stanford. IEEE is the world's largest technical organization.</p>
+
+                        <p>[Ann 5] Kim, D., Nevatia, R.: A method for recognition and localization of generic objects for indoor navigation. ARPA Image Understanding Workshop (1994). </p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: A journal article which uses multiple cameras to employ stereo vision to obtain depth information.</p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: Dongsung Kim wrote this while at the Institute for Robotics & Intelligent Systems, University of Southern California (USC).</p>
+
+                        <p>[Ann 6] Munoz-Salinas, R., Aguirre, E., Garcia-Silvente, M., Gonzalez, A.: Door-detection using computer vision and fuzzy logic. In: Proceedings of the 6th WSEAS International Conference on Mathematical Methods & Computational Techniques in Electrical Engineering (2004).</p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: This paper uses fuzzy logic to implement door-detection. Features of the segments like size, direction or the distance between them are measured and analyzed using fuzzy logic in order to establish a membership degree of the segments on the defined fuzzy concepts.</p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: These researchers are from the Department of Computer Science and Artificial Intelligence at the University of Granada. </p>
+
+                        <p>[Ann 7] Murillo, A.C., Kosecka, J., Guerrero, J.J., Sagues, C.: Visual door detection integrating appearance and shape cues. Robotics and Autonomous Systems (2008).</p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: This article attempts to do door detection using 2 classifiers based on color and shape, which is dependent on all doors being the same.</p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: These researchers are from the University of Zaragoza, Spain and the Department of Computer Science, George Mason University, Fairfax, USA.</p>
+
+                        <p>[Ann 8] OpenCV Canny Edge Detector Documentation. Accessed 05/12/2016. http://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html</p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: This is the documentation for using OpenCV's Canny Edge Detector. OpenCV is an open-source, cross-platform library for Computer Vision, originally developed by Intel. </p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: OpenCV is a well-established library. It has over 47 thousand in its user community with over 9 million downloads.</p>
+
+                        <p>[Ann 9] Javascript Quiz Code. Accessed 05/14/2016. http://www.javascriptsource.com/miscellaneous/basic-javascript-quiz.html</p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: This article goes over how to create a simple quiz on a webpage.</p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: The JavaScript Source is an excellent JavaScript resource with tons of "cut and paste" JavaScript examples for your Web pages.</p>
+
+                        <p>[Ann 10] He, X., Yung, N.: Corner detector based on global and local curvature properties. Optical Engineering 47(5) (2008).</p>
+                        <p style="margin-left:2em"><strong>Synopsis</strong>: This paper goes over a curvature-based detection algorithm for corners. </p>
+                        <p style="margin-left:2em"><strong>Reliability</strong>: He is from the CS department at the University of Hong Kong and Yung is from the Department of Electrical and Electronic Engineering at the same university.</p>
+
+                        <h2>Additional Image References</h2>
+                        <p>[Img 1] - Yang, X. and Tian Y., Robust Door Detection in Unfamiliar Environments by Combining Edge and Corner Features. <em>IEEE Computer Society Workshop on Computer Vision Applications for the Visually Impaired, 2010.</em></p>
+
+                        <p>[Img 2] - How Do Rangefinders Work. Accessed 05/02/2016. http://www.rangefinder101.com/wp-content/uploads/how-do-rangefinders-work.jpg</p>
+
+                        <p>[Img 3] - OpenCV Forum. Accessed 05/10/2016. http://answers.opencv.org/question/57688/does-camera-rotation-help-with-a-stereo-depth-map/
+
+                        <p>[Img 4] - Gaussian Smoothing. Accessed 05/10/2016. http://homepages.inf.ed.ac.uk/rbf/HIPR2/gsmooth.htm
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

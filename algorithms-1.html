@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Previous Research on Door">
+    <meta name="author" content="Eddie Chou">
+
+    <title>Previous Work on Door Finding</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="index.html">Door Finding</a></li>
+                <li><a href="index.html">Introduction to Door Finding</a></li>
+                <li><a href="system-types.html">Overview of Types of Systems</a></li>
+                <li><a href="algorithms-1.html">Algorithms Part I</a></li>
+                <li><a href="algorithms-2.html">Algorithms Part II</a></li>
+                <li><a href="results.html">Research Results and Future Work</a></li>
+                <li><a href="quiz.html">Door Finding Quiz</a></li>
+                <li><a href="annotated-biblio.html">Annotated Bibliography</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <h1>Algorithms I</h1>
+
+                        <p>These are the algorithms that are used in Computer Vision-Based Door Detection for Accessibility of Unfamiliar Environments to Blind Persons <a href="annotated-biblio.html">[Ann 1]</a>.
+
+                        <h3>Preliminary Background: The Geometric Model</a></h3>
+                        <p>Ideally, the model consists of four corners (90 degrees each) and four lines (the doorframe). However, since the door may be occluded or the door may not be exactly in front of the camera, the model used in this paper just includes four corners and four lines.
+                        <p>Now, the assumptions:</p>
+                        <ol>
+                            <li>At least 2 corners of the doorframe are visible.</li>
+                            <li>Both vertical lines of the doorframe are visible.</li>
+                            <li>The vertical lines are nearly perpendicular to the horizontal axis of the image.</li>
+                            <li>Doors in the image have a certain width and length.</li>
+                        </ol>
+                        <p>This model along with the presented assumptions for the algorithm allows the door detection to be robust to variations in color, texture, occlusion, and whether the door is opened or closed.
+
+                        <h3>Step 1: Gaussian Smoothing</h3>
+                        <p>Gaussian Smoothing, also known as Gaussian blur, is used to reduce image noise and it eliminates the unnecessary corners for door detection.</p>
+                        <img src="images/gaussian-matrix.gif" alt="gaussian matrix" height="250">
+                        <p><a href="annotated-biblio.html">[Img 4]</a> A discrete version of a filter you can apply to every pixel to enact Gaussian Smoothing.</p>
+
+                        <h3>Step 2: Canny Edge Detector</h3>
+                        <p>Developed in 1986, the Canny Edge Detector is used to obtain the edges in the image and is known as the <em>optimal detector</em> by many. The algorithm consists of the following steps <a href="annotated-biblio.html">[Ann 8]</a>:</p>
+                        <ol>
+                            <li>Use a Gaussian filter to filter out any noise (already done in Step 1, above).</li>
+                            <li>Find the intensity gradients of the image, which are the edges.</li>
+                            <li>Apply non-maximum suppression, which leaves only thin lines.</li>
+                            <li>Hysteresis: Use two thresholds. If pixel is above the upper threshold, it is an edge. If below the lower, it is rejected as an edge. If it is inbetween the two, it is accepted only if connected to pixel that is above the upper threshold.</li>
+                        </ol>
+                        <p>*More information can be found on the OpenCV implementation of the Canny Edge Detector can be found <a src="http://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html">here</a>.</p>
+
+                        <h3>Step 3: Corner Extraction</h3>
+                        <p>The corner extraction method was developed from <a href="annotated-biblio.html">[Ann 10]</a> by calculating global and local curvature properties from the edge map produced by Step 2. Endpoints of contours also count as corners, which gives us corners even if they are occluded.</p>
+
+                        <p>* See Algorithms Part II for the rest of the algorithms, <a href="algorithms-2.html">here</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
